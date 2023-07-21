@@ -13,16 +13,20 @@ const addButton=document.getElementById("add-button")
 const textInput=document.getElementById("input-field")
 const list=document.getElementById("shopping-list")
 
-addButton.addEventListener("click", function(){
-    let addedInput=textInput.value
-    if (addedInput){
-    push(shoppingListInDB, addedInput)
-    clearInput()
-    }
-    
-})
+addButton.addEventListener("click", addItem);
+textInput.addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    addItem();
+  }
+});
 
-
+function addItem() {
+  let addedInput = textInput.value;
+  if (addedInput) {
+    push(shoppingListInDB, addedInput);
+    clearInput();
+  }
+}
 
 function addShoppingList(x){
     let itemID=x[0]
